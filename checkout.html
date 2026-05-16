@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Skipbuy Luxury</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Luxury Navbar -->
+    <header class="glass scrolled">
+        <nav class="container flex justify-between">
+            <div class="logo-container flex">
+                <a href="index.html" class="logo-circle" style="width: 60px; height: 60px; font-size: 0.6rem;">
+                    <span>Skipbuy</span>
+                </a>
+            </div>
+
+            <div class="nav-links flex">
+                <a href="index.html#electronics">Electronics</a>
+                <a href="index.html#fashion">Fashion</a>
+                <a href="index.html#home">Home</a>
+            </div>
+
+            <div class="nav-actions flex">
+                <div class="icons flex">
+                    <a href="index.html" title="Back to Shop"><i class="fa-solid fa-arrow-left"></i></a>
+                    <a href="#" title="Account"><i class="fa-regular fa-user"></i></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="checkout-main container">
+        <div class="checkout-container">
+            <!-- Left Side: Form -->
+            <div class="checkout-form-section">
+                <h2>Shipping Details</h2>
+                <form id="checkout-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" placeholder="John" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Shipping Address</label>
+                        <input type="text" id="address" placeholder="123 Luxury Lane" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" placeholder="New York" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">ZIP Code</label>
+                            <input type="text" id="zip" placeholder="10001" required>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top: 3rem;">Payment Information</h2>
+                    <div class="form-group">
+                        <label for="card-num">Card Number</label>
+                        <input type="text" id="card-num" placeholder="0000 0000 0000 0000" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="exp">Expiry Date</label>
+                            <input type="text" id="exp" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="password" id="cvv" placeholder="***" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right Side: Order Summary -->
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div class="checkout-item-list" id="checkout-item-list">
+                    <!-- Items from localStorage will be here -->
+                </div>
+                <div class="summary-items">
+                    <div class="summary-item">
+                        <span>Subtotal</span>
+                        <span id="summary-subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Shipping</span>
+                        <span id="summary-shipping">Free</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total</span>
+                        <span id="summary-total">$0.00</span>
+                    </div>
+                </div>
+                <button type="submit" form="checkout-form" class="btn btn-primary place-order-btn">Complete Purchase</button>
+                <p style="text-align: center; font-size: 0.8rem; color: #aaa; margin-top: 1rem;">
+                    <i class="fa-solid fa-lock"></i> Secure encrypted transaction
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Overlay -->
+    <div class="success-overlay" id="success-overlay">
+        <div class="success-content">
+            <i class="fa-solid fa-circle-check"></i>
+            <h2>Order Placed!</h2>
+            <p>Thank you for choosing Skipbuy Luxury. Your order has been confirmed and is being prepared for priority shipping.</p>
+            <a href="index.html" class="btn btn-primary">Return to Shop</a>
+        </div>
+    </div>
+
+    <script>
+        // Simple Checkout Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('skipbuy-cart') || '[]');
+            const itemList = document.getElementById('checkout-item-list');
+            const subtotalEl = document.getElementById('summary-subtotal');
+            const totalEl = document.getElementById('summary-total');
+            const form = document.getElementById('checkout-form');
+            const successOverlay = document.getElementById('success-overlay');
+
+            if (cart.length === 0) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Render Items
+            itemList.innerHTML = cart.map(item => `
+                <div class="checkout-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="checkout-item-info">
+                        <h4>${item.name}</h4>
+                        <span class="price">$${item.price.toFixed(2)}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Calculate Totals
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            subtotalEl.innerText = `$${total.toFixed(2)}`;
+            totalEl.innerText = `$${total.toFixed(2)}`;
+
+            // Handle Form Submission
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Clear cart
+                localStorage.removeItem('skipbuy-cart');
+                // Show success
+                successOverlay.classList.add('show');
+            });
+        });
+    </script>
+</body>
+</html>

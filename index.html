@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skipbuy | Luxury Ecommerce Reimagined</title>
+    <meta name="description" content="Experience premium shopping with Skipbuy. Luxury electronics, fashion, beauty, and more at your fingertips.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Luxury Navbar -->
+    <header class="glass">
+        <nav class="container flex justify-between">
+            <div class="logo-container flex">
+                <div class="logo-circle">
+                    <span>Skipbuy</span>
+                </div>
+            </div>
+
+            <div class="nav-links flex">
+                <a href="#electronics">Electronics</a>
+                <a href="#fashion">Fashion</a>
+                <a href="#home">Home</a>
+                <a href="#beauty">Beauty</a>
+            </div>
+
+            <div class="nav-actions flex">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search premium products...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="icons flex">
+                    <a href="#" id="theme-toggle" title="Toggle Theme"><i class="fa-solid fa-moon"></i></a>
+                    <a href="#" title="Account"><i class="fa-regular fa-user"></i></a>
+                    <a href="#" title="Wishlist"><i class="fa-regular fa-heart"></i><span class="badge">0</span></a>
+                    <a href="#" title="Cart" class="cart-toggle"><i class="fa-solid fa-bag-shopping"></i><span class="badge" id="cart-count">0</span></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container flex hero-content">
+                <div class="hero-text">
+                    <span class="tag">New Collection 2026</span>
+                    <h1>Luxury for <br><span class="text-gold">Everyday</span> Living</h1>
+                    <p>Discover a curated selection of premium electronics, high-end fashion, and designer home decor. Modern elegance meets global reach.</p>
+                    <div class="hero-btns flex">
+                        <a href="#trending" class="btn btn-primary">Shop Now</a>
+                        <a href="#collections" class="btn btn-outline">View Collections</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img src="hero-watch.png" alt="Luxury Watch">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories container">
+            <div class="section-header">
+                <h2>Browse by Category</h2>
+                <p>Everything you need, in one elegant place.</p>
+            </div>
+            <div class="category-grid">
+                <div class="cat-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('handbag.png');">
+                    <h3>Fashion</h3>
+                    <a href="#trending" class="explore-btn" data-category="Fashion">Explore</a>
+                </div>
+                <div class="cat-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('smartphone.png');">
+                    <h3>Electronics</h3>
+                    <a href="#trending" class="explore-btn" data-category="Electronics">Explore</a>
+                </div>
+                <div class="cat-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('sofa.png');">
+                    <h3>Home Decor</h3>
+                    <a href="#trending" class="explore-btn" data-category="Home">Explore</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Products -->
+        <section id="trending" class="trending container">
+            <div class="section-header" style="position: relative;">
+                <h2 id="trending-title">Trending Now</h2>
+                <p id="trending-subtitle">Most coveted items this week.</p>
+                <button id="view-all-btn" class="btn btn-outline" style="display: none; position: absolute; right: 0; top: 0; padding: 8px 16px; font-size: 0.8rem;">View All</button>
+            </div>
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be injected via JS -->
+            </div>
+        </section>
+
+        <!-- Luxury Collections Promo -->
+        <section class="promo">
+            <div class="container flex promo-container">
+                <div class="promo-content">
+                    <h2>Skipbuy Premium</h2>
+                    <p>Join the circle. Get exclusive access to limited drops, priority shipping, and personalized styling services.</p>
+                    <a href="#" class="btn btn-primary">Join Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo-circle">
+                    <span>Skipbuy</span>
+                </div>
+                <p>Redefining modern luxury ecommerce. Clean, elegant, and accessible to everyone.</p>
+                <div class="socials flex">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Shop</h4>
+                <a href="#">Electronics</a>
+                <a href="#">Fashion</a>
+                <a href="#">Beauty</a>
+                <a href="#">Home Decor</a>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <a href="#">Delivery Tracking</a>
+                <a href="#">Returns & Exchanges</a>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe to receive updates on new collections.</p>
+                <div class="newsletter-form flex">
+                    <input type="email" placeholder="Email Address">
+                    <button class="btn btn-primary">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom flex justify-between">
+            <p>&copy; 2026 Skipbuy. All rights reserved.</p>
+            <div class="legal flex">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header flex justify-between">
+            <h3>Your Shopping Bag</h3>
+            <button class="close-cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be injected here -->
+            <p class="empty-msg">Your bag is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="flex justify-between total">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button class="btn btn-primary checkout-btn">Checkout Now</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

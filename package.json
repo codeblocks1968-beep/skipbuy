@@ -1,0 +1,21 @@
+{
+  "name": "skipbuy-luxury",
+  "version": "1.0.0",
+  "description": "Skipbuy Luxury Ecommerce - A premium shopping experience.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "luxury",
+    "ecommerce",
+    "premium"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
